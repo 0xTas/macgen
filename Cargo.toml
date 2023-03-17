@@ -1,11 +1,18 @@
 [package]
 name = "macgen"
-version = "0.1.1"
+license = "MIT"
 edition = "2021"
+version = "0.1.2"
+repository = "https://github.com/0xTas/macgen"
+authors = ["Zach Griffin (0xTas) <root@0xTas.dev>"]
+description = "Generates strings that can be used as fake MAC addresses."
+
 
 [profile.release]
 strip = true
 lto = true
 
-[dependencies]
-rand = "0.8.5"
+
+[dependencies.rand]
+version = "0.8.5"
+
