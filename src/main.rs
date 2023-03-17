@@ -13,13 +13,16 @@ fn main() {
 
     let formatted_addr = substrings.join(":");
 
-    let mut args = std::env::args();
-
-    if args.any(|arg| arg == "-n") {
+    if std::env::args().any(|arg| arg == "-n") {
+        println!("wgy");
         println!("{}", formatted_addr);
-    } else if args.any(|arg| arg.to_lowercase() == "-h" || arg.to_lowercase() == "--help") {
+    } else if std::env::args()
+        .any(|arg| arg.to_lowercase() == "-h" || arg.to_lowercase() == "--help")
+    {
+        println!("plss");
         println!("Usage: ./macgen [-n (appends newline)]");
     } else {
+        println!("whyyy");
         print!("{}", formatted_addr);
     };
 }
