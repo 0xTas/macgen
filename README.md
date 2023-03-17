@@ -1,6 +1,7 @@
 # MACgen
 
-A simple tool that spits out any number of fake MAC addresses you want.
+A simple tool that spits out any number of fake MAC addresses you want.<br>
+It doesn't change your system's configuration in any way, just prints randomized addresses to stdout.
 
 ## Usage
 
