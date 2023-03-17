@@ -2,7 +2,7 @@
 name = "macgen"
 license = "MIT"
 edition = "2021"
-version = "0.2.0"
+version = "1.0.0"
 repository = "https://github.com/0xTas/macgen"
 authors = ["Zach Griffin (0xTas) <root@0xTas.dev>"]
 description = "Generates strings that can be used as fake MAC addresses."
