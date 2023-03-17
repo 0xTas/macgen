@@ -6,7 +6,7 @@ A simple tool that spits out any number of fake MAC addresses you want.
 
 `./macgen [options] [num]`
 
-### options
+### Options
 
 You can specify any positive number (e.g. 7, 69, 420, etc.) of MAC addresses to generate.<br><br> 
 
