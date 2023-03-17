@@ -28,38 +28,11 @@ fn main() {
         1
     };
 
-    if std::env::args().any(|arg| arg == "-n") {
-        for _ in 0..iters {
-            let mut rng = thread_rng();
-
-            let fake_addr: u64 = thread_rng().gen_range(0x100000..=0xffffff);
-            let fake_addr_str = format!("{:2X}", fake_addr);
-
-            let substrings = fake_addr_str
-                .as_bytes()
-                .chunks(2)
-                .map(std::str::from_utf8)
-                .collect::<Result<Vec<&str>, _>>()
-                .expect("Expected valid chunks!");
-
-            let formatted_addr = substrings.join(":");
-
-            print!(
-                "{}:{} ",
-                oui_prefixes
-                    .choose(&mut rng)
-                    .expect("Vec should not be empty."),
-                formatted_addr
-            );
-        }
-    } else if std::env::args()
-        .any(|arg| arg.to_lowercase() == "-h" || arg.to_lowercase() == "--help")
-    {
+    if std::env::args().any(|arg| arg.to_lowercase() == "-h" || arg.to_lowercase() == "--help") {
         println!("Usage: ./macgen [-n (won't append newline)] [num (e.g 5)]");
     } else {
         for _ in 0..iters {
             let mut rng = thread_rng();
-
             let fake_addr: u64 = thread_rng().gen_range(0x100000..=0xffffff);
             let fake_addr_str = format!("{:2X}", fake_addr);
 
@@ -72,13 +45,23 @@ fn main() {
 
             let formatted_addr = substrings.join(":");
 
-            println!(
-                "{}:{}",
-                oui_prefixes
-                    .choose(&mut rng)
-                    .expect("Vec should not be empty."),
-                formatted_addr
-            );
+            if std::env::args().any(|arg| arg == "-n") {
+                print!(
+                    "{}:{} ",
+                    oui_prefixes
+                        .choose(&mut rng)
+                        .expect("Vec should not be empty."),
+                    formatted_addr
+                );
+            } else {
+                println!(
+                    "{}:{}",
+                    oui_prefixes
+                        .choose(&mut rng)
+                        .expect("Vec should not be empty."),
+                    formatted_addr
+                );
+            };
         }
     };
 }
